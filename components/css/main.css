@@ -1,0 +1,69 @@
+.hero {
+    display: inline-block;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+}
+.hero > h1 {
+    margin-top: calc((100px - 17px) / 2);
+    font-size: 30px;
+    font-weight: bold;
+}
+.saskaitu_sarasas {
+    width: 100%;
+    height: auto;
+}
+.sarasas {
+    width: 100%;
+    
+}
+.sarasas > h3 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0px;
+}
+.account_list {
+    width: 100%;
+    display: inline-block;
+    list-style-type: none;
+    text-align: justify;
+    margin: auto;
+}
+form {
+    display: inline-block;
+}
+.ul_item {
+    width: 90%;
+    height: auto;
+    margin: auto;
+}
+.ul_item > form > a {
+    display: inline-block;
+    text-decoration: none;
+    margin: 15px;
+    font-size: 13px;
+    padding: 2px 10px;
+    color:black;
+}
+.ul_item > form > a:hover {
+    color: cornflowerblue;
+    background-color:rgb(228, 228, 228);
+}
+.ul_item > form > button {
+    display: inline-block;
+    margin: 15px;
+}
+
+.ul_item:nth-child(odd) {
+    background-color: rgb(221, 221, 221);
+}
+.account_list > .ul_item > h4 {
+    display: inline-block;
+    margin: 15px;
+    font-weight: 400;
+    font-size: 14px;
+    color: cornflowerblue;
+}
+
+

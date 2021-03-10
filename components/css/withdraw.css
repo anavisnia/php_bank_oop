@@ -1,0 +1,32 @@
+.withdraw_main {
+    width: 100%;
+    height: calc(100vh - 39px);
+}
+
+.person_info_header > h3 {
+    text-align: center;
+    margin: 30px 0px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.person_info_body > p {
+    height: 50px;
+    color: cornflowerblue;
+    padding: 15px 0px;
+    margin: 0px 40px;
+}
+.person_info_body > p:nth-child(odd) {
+    background-color: rgb(221, 221, 221);
+}
+
+.person_info_body > form > p {
+    display: inline-block;
+    color: cornflowerblue;
+
+}
+.person_info_body > form {
+    height: 50px;
+    padding: 15px 0px;
+    margin: 10px 40px 0px 40px;
+    background-color: rgb(221, 221, 221);
+}

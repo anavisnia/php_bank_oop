@@ -2,6 +2,7 @@
 
 class Json {
     private $data;
+    
     private static $jsonObject;
 
     public static function getDB()
@@ -21,7 +22,7 @@ class Json {
 
     public function __destruct()
     {
-        file_put_contents(DIR.'data/users.json', json_decode($this->data));
+        file_put_contents(DIR.'data/users.json', json_encode($this->data));
     }
 
     public function readData() : array

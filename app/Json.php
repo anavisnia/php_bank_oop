@@ -7,17 +7,17 @@ class Json {
 
     public static function getDB()
     {
-        return self::$jsonObject ?? self::$jsonObject = new Self;
+        return self::$jsonObject ?? self::$jsonObject = new self;
     }
-    
-    public function __construct()
+
+    private function __construct()
     {
         if(!file_exists(DIR.'data/users.json')) {
             $data = json_encode([]);
             file_put_contents(DIR.'data/users.json', $data);
         }
         $data = file_get_contents(DIR.'data/users.json');
-        $this->$data = json_decode($data);
+        $this->data = json_decode($data);
     }
 
     public function __destruct()
@@ -52,15 +52,15 @@ class Json {
         $this->data[] = $user;
     }
 
-    public function update(object $updateThisUser) : void
-    {
-        foreach($this->data as $key => $user) {
-            if ($user->id == $updateThisUser->id) {
-                $this->data[$key] = $user;
-                return;
-            }
-        }
-    }
+    // public function update(object $updateThisUser) : void
+    // {
+    //     foreach($this->data as $key => $user) {
+    //         if ($user->id == $updateThisUser->id) {
+    //             $this->data[$key] = $user;
+    //             return;
+    //         }
+    //     }
+    // }
 
     public function delete(int $id) : void
     {
@@ -83,7 +83,7 @@ class Json {
 
     private function getNextId() : int
     {
-        if (!file_exists(DIR.'data/indexes.json')) {// pirmas kartas
+        if (!file_exists(DIR.'data/indexes.json')) {
             $index = json_encode(['id'=>1]);
             file_put_contents(DIR.'data/indexes.json', $index);
         }

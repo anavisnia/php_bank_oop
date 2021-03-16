@@ -52,15 +52,15 @@ class Json {
         $this->data[] = $user;
     }
 
-    // public function update(object $updateThisUser) : void
-    // {
-    //     foreach($this->data as $key => $user) {
-    //         if ($user->id == $updateThisUser->id) {
-    //             $this->data[$key] = $user;
-    //             return;
-    //         }
-    //     }
-    // }
+    public function update(object $updateThisUser) : void
+    {
+        foreach($this->data as $key => $user) {
+            if ($user->id == $updateThisUser->id) {
+                $this->data[$key] = $user;
+                return;
+            }
+        }
+    }
 
     public function delete(int $id) : void
     {

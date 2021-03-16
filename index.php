@@ -21,7 +21,10 @@ elseif ('store' == $uri[0]) {
     (new UserController)->store();
 }
 elseif ('add' == $uri[0]) {
-    (new UserController)->add((int)$uri[1]);
+    (new Account)->add((int)$uri[1]);
+}
+elseif ('addAmount' == $uri[0]) {
+    (new Account)->addAmount((int)$uri[1]);
 }
 elseif ('withdraw' == $uri[0]) {
     (new UserController)->withdraw((int)$uri[1]);

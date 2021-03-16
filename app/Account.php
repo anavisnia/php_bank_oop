@@ -32,7 +32,7 @@ class Account {
         require DIR.'views/withdraw.php';
     }
 
-    function withdrawAmount(int $id) : void
+    public function withdrawAmount(int $id) : void
     {
         $user = Json::getDB()->getUser($id);
         $withdraw = (float) ($_POST['withdrawAmount'] ?? 0);
@@ -51,5 +51,19 @@ class Account {
         }
         header('Location: '.URL);
         die;
+    }
+
+    public static function createAccountNum() : string
+    {
+        $checkedNum = '01';
+        $bankCode = '88000';
+        $randAccNum = '';
+        for($i = 0; $i <= 10; $i++) {
+            $rand = (string) rand(0, 9);
+            $randAccNum .= $rand;
+        }
+        $accountNum = 'LT' . $checkedNum . $bankCode . $randAccNum;
+        $accountNum = (string) $accountNum;
+        return $accountNum;
     }
 }

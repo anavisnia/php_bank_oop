@@ -5,7 +5,6 @@
         <h3><?= $pageTitle ?></h3>
     </div>
     <div class="person_info_body">
-        <?php foreach($users as $user) : ?>
             <p>Kliento Vardas: <?= $user->fName?></p>
             <p>Kliento Pavarde: <?= $user->lName?></p>
             <p>Kliento Saskaitos Nr.: <?= $user->accountNum?></p>
@@ -17,7 +16,6 @@
                 <p>Eur</p>
                 <button type="submit">Prideti</button>
             </form>
-        <?php endforeach ?>
     </div>
 </section>
 <?php require DIR.'views/bottom.php'?>

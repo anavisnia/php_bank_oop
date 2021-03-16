@@ -29,26 +29,6 @@ class UserController {
         die;
     }
 
-    function add(int $id, float $addAmount) : void
-    {
-        $users = readData();
-        $user = getUser($id);
-        if(!$user) {
-            return;
-        }
-        $addAmountround = round($addAmount, 2);
-        if($addAmountround <= 0) {
-            $_SESSION['status'] = 'Ivyko klaida! Bandykite dar karta.';
-            return;
-        }
-        $user['currentAmount'] += $addAmountround;
-        deleteUser($id);
-        $users = readData();
-        $users[] = $user;
-        writeData($users);
-        $_SESSION['status'] = 'Operacija atlikta sėkmingai!';
-    }
-
     function withdraw(int $id, float $withdraw) : void
     {
         $users = readData();

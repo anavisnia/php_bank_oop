@@ -29,34 +29,6 @@ class UserController {
         die;
     }
 
-    function withdraw(int $id, float $withdraw) : void
-    {
-        $users = readData();
-        $user = getUser($id);
-        if(!$user) {
-            return;
-        }
-        $withdrawRound = round($withdraw, 2);
-        if($withdraw <= 0) {
-            $_SESSION['status'] = 'Ivyko klaida! Bandykite dar karta.';
-            return;
-        }
-        $currentAmount = (float) $user['currentAmount'];
-        $afterWithdraw = $currentAmount - $withdrawRound;
-        $afterWithdrawRound = round($afterWithdraw, 2);
-        if($afterWithdraw >= 0) {
-            $user['currentAmount'] = $afterWithdrawRound;
-            deleteUser($id);
-            $users = readData();
-            $users[] = $user;
-            writeData($users);
-            $_SESSION['status'] = 'Operacija atlikta sėkmingai!';
-        }  else {
-            $_SESSION['status'] = 'Ivyko klaida! Bandykite dar karta.';
-            return;
-        }
-    }
-
     public function delete(int $id)
     {
         Json::getDB()->delete($id);

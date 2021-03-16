@@ -27,7 +27,10 @@ elseif ('addAmount' == $uri[0]) {
     (new Account)->addAmount((int)$uri[1]);
 }
 elseif ('withdraw' == $uri[0]) {
-    (new UserController)->withdraw((int)$uri[1]);
+    (new Account)->withdraw((int)$uri[1]);
+}
+elseif ('withdrawAmount' == $uri[0]) {
+    (new Account)->withdrawAmount((int)$uri[1]);
 }
 elseif ('delete' == $uri[0]) {
     (new UserController)->delete((int)$uri[1]);

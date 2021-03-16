@@ -1,10 +1,11 @@
 <?php
 class Account {
 
-    public function add()
+    public function add(int $id)
     {
         $pageTitle = 'Prideti lesas';
         $users = Json::getDB()->readData();
+        $user = Json::getDB()->getUser($id);
         require DIR.'views/add.php';
        
     }
@@ -23,10 +24,11 @@ class Account {
         die;
     }
 
-    public function withdraw()
+    public function withdraw(int $id)
     {
         $pageTitle = 'Prideti lesas';
         $users = Json::getDB()->readData();
+        $user = Json::getDB()->getUser($id);
         require DIR.'views/withdraw.php';
     }
 

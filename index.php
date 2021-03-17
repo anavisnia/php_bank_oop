@@ -12,26 +12,26 @@ _pc($uri);
 // ROUTING
 
 if ('' == $uri[0]) {
-    (new UserController)->index();
+    (new App\UserController)->index();
 }
 elseif ('create' == $uri[0]) {
-    (new UserController)->create();
+    (new App\UserController)->create();
 }
 elseif ('store' == $uri[0]) {
-    (new UserController)->store();
+    (new App\UserController)->store();
 }
 elseif ('add' == $uri[0]) {
-    (new Account)->add((int)$uri[1]);
+    (new App\Account)->add((int)$uri[1]);
 }
 elseif ('addAmount' == $uri[0]) {
-    (new Account)->addAmount((int)$uri[1]);
+    (new App\Account)->addAmount((int)$uri[1]);
 }
 elseif ('withdraw' == $uri[0]) {
-    (new Account)->withdraw((int)$uri[1]);
+    (new App\Account)->withdraw((int)$uri[1]);
 }
 elseif ('withdrawAmount' == $uri[0]) {
-    (new Account)->withdrawAmount((int)$uri[1]);
+    (new App\Account)->withdrawAmount((int)$uri[1]);
 }
 elseif ('delete' == $uri[0]) {
-    (new UserController)->delete((int)$uri[1]);
+    (new App\UserController)->delete((int)$uri[1]);
 }

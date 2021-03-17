@@ -14,7 +14,7 @@
                         <h4>Pavarde: <?= $user->lName ?> </h4>
                         <h4>Saskaitos Nr. <?= $user->accountNum ?> </h4>
                         <h4>Likutis: <?= $user->currentAmount ?> EUR</h4>
-                        <h4>Likutis: <?= App\Account::getUserCurrency($user->id) ?> KRW</h4>
+                        <h4>Likutis: <?= App\Account::getUserCurrency($user->id) ?? '' ?> KRW</h4>
                         <form action="<?= URL ?>delete/<?= $user->id ?>" method="post">
                             <button type="submit">Istrinti</button>
                             <a href="<?= URL ?>add/<?= $user->id ?>">Prideti</a>

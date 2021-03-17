@@ -8,6 +8,7 @@ class UserController {
         $pageTitle = 'Bankas';
         $users = Json::getDB()->readData();
         require DIR.'views/index.php';
+        Helper::getCurrency();
     }
 
     public function create()

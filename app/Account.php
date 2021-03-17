@@ -55,6 +55,16 @@ class Account {
         die;
     }
 
+    public static function getUserCurrency(int $id)
+    {
+        $users = Json::getDB()->readData();
+        $user = Json::getDB()->getUser($id);
+        $currentAmount = $user->currentAmount;
+        $currency = (float) Helper::getCurrency();
+        $currentCurrency = $currentAmount * $currency;
+        return $currentCurrency;
+    }
+
     public static function createAccountNum() : string
     {
         $checkedNum = '01';

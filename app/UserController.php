@@ -6,9 +6,9 @@ class UserController {
     public function index()
     {
         $pageTitle = 'Bankas';
-        $users = Json::getDB()->readData();
+        $users = Json::getDB()->readData('users');
+        // $api = Json::getDB()->readData('currency');
         require DIR.'views/index.php';
-        Helper::getCurrency();
     }
 
     public function create()
@@ -40,7 +40,7 @@ class UserController {
 
     private function checkPersonId(string $personId)
     {
-        $users = Json::getDB()->readData();
+        $users = Json::getDB()->readData('users');
         foreach($users as $user) {
             if($user->personId == $personId || strlen($personId) < 11) {
                 header('Location: '.URL);

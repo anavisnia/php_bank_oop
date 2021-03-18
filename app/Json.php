@@ -3,6 +3,7 @@ namespace App;
 
 class Json {
     private $data;
+    private $apiData;
     
     private static $jsonObject;
 
@@ -19,21 +20,41 @@ class Json {
         }
         $data = file_get_contents(DIR.'data/users.json');
         $this->data = json_decode($data);
+
+        if(!file_exists(DIR.'data/currency.json')) {
+            file_put_contents(DIR.'data/currency.json',
+                json_encode([
+                    'time' => time()-TIME-1, 
+                    'currency' => (object)[]
+                ])
+            );
+        }
+        $apiData = file_get_contents(DIR.'data/currency.json');
+        $this->apiData = json_decode($apiData);
     }
 
     public function __destruct()
     {
         file_put_contents(DIR.'data/users.json', json_encode($this->data));
+        file_put_contents(DIR.'data/currency.json', json_encode($this->apiData));
     }
 
-    public function readData() : array
+    public function readData(string $fileName)
     {
-        return $this->data;
+        if($fileName === 'users') {
+            return $this->data;
+        } elseif ($fileName === 'currency') {
+            return $this->apiData;
+        }
     }
 
-    public function writeData(array $data) : void
+    public function writeData(array $data, string $fileName) : void
     {
-        $this->data = json_encode($data);
+        if($fileName === 'users') {
+            $this->data = json_encode($data);
+        } elseif($fileName === 'currency') {
+            $this->apiData = $data;
+        }
     }
 
     public function getUser(int $id) : ?object

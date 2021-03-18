@@ -6,10 +6,9 @@ class Account {
     public function add(int $id)
     {
         $pageTitle = 'Prideti lesas';
-        $users = Json::getDB()->readData();
+        $users = Json::getDB()->readData('users');
         $user = Json::getDB()->getUser($id);
         require DIR.'views/add.php';
-       
     }
 
     public function addAmount(int $id) : void
@@ -29,7 +28,7 @@ class Account {
     public function withdraw(int $id)
     {
         $pageTitle = 'Prideti lesas';
-        $users = Json::getDB()->readData();
+        $users = Json::getDB()->readData('users');
         $user = Json::getDB()->getUser($id);
         require DIR.'views/withdraw.php';
     }
@@ -57,12 +56,15 @@ class Account {
 
     public static function getUserCurrency(int $id)
     {
-        $users = Json::getDB()->readData();
+        Currency::getCurrency();
+        $users = Json::getDB()->readData('users');
         $user = Json::getDB()->getUser($id);
         $currentAmount = $user->currentAmount;
-        $currency = (float) Helper::getCurrency();
-        $currentCurrency = $currentAmount * $currency;
-        return $currentCurrency;
+        $currency = Json::getDB()->readData('currency');
+        $currencyNum = (float) $currency->data->rates->JPY;
+        $currentCurrency = $currentAmount * $currencyNum;
+        $currentCurrencyRound = round($currentCurrency, 2);
+        return $currentCurrencyRound;
     }
 
     public static function createAccountNum() : string
